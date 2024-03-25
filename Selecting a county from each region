@@ -1,0 +1,7 @@
+#Find the county in each region with the highest percentage of citizens who walk to work.
+
+counties_selected %>%
+  # Group by region
+  group_by(region) %>%
+  # Find the county with the highest percentage of people who walk to work
+slice_max(walk, n=1)
