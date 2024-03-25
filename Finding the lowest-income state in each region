@@ -1,0 +1,9 @@
+#Calculate the average income (as average_income) of counties within each region and state (notice the group_by() has already been done for you).
+#Find the state with the lowest average_income in each region.
+
+counties_selected %>%
+  group_by(region, state) %>%
+  # Calculate average income
+  summarize(average_income = mean(income)) %>%
+  # Find the lowest income state in each region
+  slice_min(average_income, n = 1)
