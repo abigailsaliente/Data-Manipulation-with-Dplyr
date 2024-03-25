@@ -1,0 +1,20 @@
+#Group the data by state, and summarize to create the columns total_area (the total land_area in square miles) and total_population (with total population).
+
+
+counties_selected %>%
+  # Group by state 
+  group_by(state) %>%
+  # Find the total area and population
+  summarize(total_area= sum(land_area),
+            total_population= sum(population))
+
+#Add a density column containing the total population per square mile, using the columns you already created, then arrange in descending order.
+
+counties_selected %>%
+  group_by(state) %>%
+  summarize(total_area = sum(land_area),
+            total_population = sum(population)) %>%
+  # Add a density column
+  mutate(density = total_population / total_area) %>%
+  # Sort by density in descending order
+  arrange(desc(density))
