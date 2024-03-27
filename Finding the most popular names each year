@@ -1,0 +1,4 @@
+babynames %>%
+  # Find the most common name in each year
+  group_by(year) %>%
+  slice_max(number, n = 1)
